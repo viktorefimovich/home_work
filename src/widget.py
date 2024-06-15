@@ -2,7 +2,6 @@ from datetime import datetime
 from typing import Any
 
 from src import masks
-from src.masks import get_mask_card_number, get_mask_account
 
 
 def mask_account_card(input_data: str) -> Any:

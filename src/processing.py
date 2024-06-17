@@ -1,4 +1,4 @@
-from typing import Dict, List, Any
+from typing import Dict, List
 
 
 def filter_by_state(list_dict: List[Dict], state: str = "EXECUTED") -> List[Dict]:
@@ -11,7 +11,7 @@ def filter_by_state(list_dict: List[Dict], state: str = "EXECUTED") -> List[Dict
     return new_list_dict
 
 
-def sort_by_date(list_dict: list[dict[str, Any]], ascending: bool = True) -> list[dict[str, Any]]:
+def sort_by_date(list_dict: List[Dict], ascending: bool = True) -> List[Dict]:
     """Функция сортировки операций по дате"""
 
     list_dict_sort = sorted(list_dict, key=lambda x: x["date"], reverse=ascending)

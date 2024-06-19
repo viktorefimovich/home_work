@@ -3,8 +3,10 @@ import pytest
 from src.widget import mask_account_card, get_data
 
 
-@pytest.mark.parametrize("input_data, expected", [("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"),
-                                                  ("Счет 35383033474447895560", "Счет **5560")])
+@pytest.mark.parametrize(
+    "input_data, expected",
+    [("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"), ("Счет 35383033474447895560", "Счет **5560")],
+)
 def test_mask_account_card(input_data, expected):
     assert mask_account_card(input_data) == expected
 

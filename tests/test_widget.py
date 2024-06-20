@@ -11,7 +11,13 @@ def test_mask_account_card(input_data, expected):
     assert mask_account_card(input_data) == expected
 
 
-def test_get_data():
-    assert get_data("2018-07-11T02:26:18.671407") == "11.07.2018"
-    assert get_data("2018-07-11") == "Неверный формат даты"
-    assert get_data("") == "Неверный формат даты"
+@pytest.mark.parametrize(
+    "date_input, expected",
+    [
+        ("2018-07-11T02:26:18.671407", "11.07.2018"),
+        ("2018-07-11", "Неверный формат даты"),
+        ("", "Неверный формат даты"),
+    ],
+)
+def test_get_data(date_input, expected):
+    assert get_data(date_input) == expected

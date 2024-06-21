@@ -7,28 +7,28 @@
 ## Установка:
 
 1.Клонируйте репозиторий:
-'''
+```
 git clone https://github.com/viktorefimovich/home_work.git
-'''
+```
 
 ## Тестирование:
 
 1.Установите фреймворк pytest:
-'''
+```
 poetry add --group dev pytest
-'''
+```
 
 2.Запустите тест pytest:
-'''
+```
 pytest
-'''
+```
 
 3.В pytest для анализа покрытия кода надо поставить библиотеку pytest-cov:
-'''
+```
 poetry add --group dev pytest-cov
-'''
+```
 
 4.Запустите тесты с оценкой покрытия, при активированном виртуальном окружении:
-'''
+```
 pytest --cov
-'''
+```

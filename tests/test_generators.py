@@ -1,6 +1,6 @@
 import pytest
 
-from src.generators import filter_by_currency, transaction_descriptions
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
 
 @pytest.fixture
@@ -67,3 +67,12 @@ def test_transaction_descriptions(data_transactions):
     transaction = transaction_descriptions(data_transactions)
     assert next(transaction) == "Перевод организации"
     assert next(transaction) == "Перевод со счета на счет"
+
+
+def test_card_number_generator():
+    card_number = card_number_generator(1, 5)
+    assert next(card_number) == "0000 0000 0000 0001"
+    assert next(card_number) == "0000 0000 0000 0002"
+    assert next(card_number) == "0000 0000 0000 0003"
+    assert next(card_number) == "0000 0000 0000 0004"
+    assert next(card_number) == "0000 0000 0000 0005"

@@ -1,7 +1,7 @@
-from typing import List, Dict
+from typing import List, Dict, Generator
 
 
-def filter_by_currency(data_transactions: List[Dict[str, dict]], currency: str):
+def filter_by_currency(data_transactions: List[Dict], currency: str) -> Generator:
     """Функция, которая выдает по очереди операции, в которых указана заданная валюта"""
 
     for transaction in data_transactions:
@@ -14,8 +14,9 @@ def filter_by_currency(data_transactions: List[Dict[str, dict]], currency: str):
 #     print(next(usd_transactions))
 
 
-def transaction_descriptions(data_transactions: List[Dict[str, dict]]):
+def transaction_descriptions(data_transactions: List[Dict]) -> Generator:
     """Функция, которая возвращает описание каждой операции по очереди."""
+
     for transaction in data_transactions:
         yield transaction["description"]
 
@@ -26,7 +27,7 @@ def transaction_descriptions(data_transactions: List[Dict[str, dict]]):
 #     print(next(descriptions))
 
 
-def card_number_generator(a: int, b: int):
+def card_number_generator(a: int, b: int) -> Generator:
     """Функция генератор номеров банковских карт"""
 
     while a <= b:

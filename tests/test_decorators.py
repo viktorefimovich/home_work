@@ -49,5 +49,6 @@ def test_log_decorator_err():
 
 
 def test_delete_test_log():
+    """Функция удаления временного файла test_log.txt для тестов"""
 
     os.remove("test_log.txt")

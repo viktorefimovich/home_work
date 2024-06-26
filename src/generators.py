@@ -30,11 +30,7 @@ def transaction_descriptions(data_transactions: List[Dict]) -> Generator:
 def card_number_generator(a: int, b: int) -> Generator:
     """Функция генератор номеров банковских карт"""
 
-    while a <= b:
-        card_num_temp = str(a + 10000000000000000)
-        yield f"{card_num_temp[-16:-12]} {card_num_temp[-12:-8]} {card_num_temp[-8:-4]} {card_num_temp[-4:]}"
-        a += 1
-
-
-# for card_number in card_number_generator(100, 111):
-#     print(card_number)
+    for number in range(a, b+1):
+        card_num_temp = f"{number:016}"
+        generated_card_number = "".join(card_num_temp[i:i+4] for i in range(0, 16, 4))
+        yield generated_card_number

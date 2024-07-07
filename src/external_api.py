@@ -1,11 +1,9 @@
 import os
-import json
 from pathlib import Path
-
 from typing import Any
 
-from dotenv import load_dotenv
 import requests
+from dotenv import load_dotenv
 
 from src.utils import transactions
 

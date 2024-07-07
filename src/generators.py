@@ -32,5 +32,5 @@ def card_number_generator(a: int, b: int) -> Generator:
 
     for number in range(a, b + 1):
         card_num_temp = f"{number:016}"
-        generated_card_number = "".join(card_num_temp[i : i + 4] for i in range(0, 16, 4))
+        generated_card_number = " ".join(card_num_temp[i : i + 4] for i in range(0, 16, 4))
         yield generated_card_number

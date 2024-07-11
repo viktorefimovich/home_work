@@ -31,6 +31,7 @@ def get_mask_account(account_number: str) -> str:
         logger.info("Выводится замаскированный номер счета")
         return f"**{account_number[-4:]}"
 
+
 if __name__ == "__main__":
     print(get_mask_card_number("1234567890123450"))
     print(get_mask_account("12345678901234567890"))

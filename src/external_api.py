@@ -5,8 +5,6 @@ from typing import Any
 import requests
 from dotenv import load_dotenv
 
-from src.utils import transactions
-
 load_dotenv()
 
 ROOTPATH = Path(__file__).resolve().parent.parent
@@ -32,4 +30,4 @@ def get_sum_transaction(transaction: Any) -> Any:
     return result["result"]
 
 
-print(get_sum_transaction(transactions[1]))
+# print(get_sum_transaction(transactions[1]))

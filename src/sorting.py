@@ -2,7 +2,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-from utils import get_data_transactions
+from src.utils import get_data_transactions
 
 ROOTPATH = Path(__file__).resolve().parent.parent
 

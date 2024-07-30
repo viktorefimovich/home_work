@@ -21,6 +21,14 @@ def sort_by_date(list_dict: List[Dict], ascending: bool = True) -> List[Dict]:
         return list_dict_sort
 
 
+def filter_by_currencies(transactions: list[dict], currencies: list[str]) -> list[dict]:
+    """
+    Функция принимает на вход список словарей с данными о транзакциях и возвращает только те,
+    где есть совпадение code в currencies.
+    """
+
+    return [x for x in transactions if x.get("operationAmount", {}).get("currency", {}).get("code") in currencies]
+
 # if __name__ == "__main__":
 #     print(
 #         filter_by_state(

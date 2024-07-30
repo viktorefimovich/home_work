@@ -16,8 +16,11 @@ def mask_account_card(input_data: str) -> Any:
 def get_data(date: str) -> str:
     """Функция преобразования даты"""
 
-    if len(date) != 26:
-        return "Неверный формат даты"
-    else:
+    if len(date) == 26:
         date_it = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%f")
         return date_it.strftime("%d.%m.%Y")
+    elif len(date) == 20:
+        date_it = datetime.strptime(date, "%Y-%m-%dT%H:%M:%SZ")
+        return date_it.strftime("%d.%m.%Y")
+    else:
+        return "Неверный формат даты"

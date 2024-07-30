@@ -21,8 +21,14 @@ def get_data_transactions(file_name: str) -> Any:
     try:
         if ".csv" in file_name:
             logger.info(f"Чтение CSV-файла: {file_name}")
-            file_data = pd.read_csv(file_name, encoding="utf8")
-            return file_data.to_dict(orient="records")
+            file_data = pd.read_csv(file_name, delimiter=";", encoding="utf8")
+            file_data["operationAmount"] = file_data.apply(lambda row: {"amount": row["amount"],
+                                                                        "currency": {"name": row["currency_name"],
+                                                                                     "code": row["currency_code"]}},
+                                                           axis=1)
+            col_order =["id", "state", "date", "operationAmount", "description", "from", "to"]
+            file_data = file_data[col_order]
+            return file_data.to_dict(orient='records')
         elif ".json" in file_name:
             logger.info(f"Чтение JSON-файла: {file_name}")
             with open(file_name, encoding="utf-8") as f:
@@ -38,6 +44,12 @@ def get_data_transactions(file_name: str) -> Any:
         elif ".xlsx" in file_name:
             logger.info(f"Чтение XLSX-файла: {file_name}")
             file_data = pd.read_excel(file_name)
+            file_data["operationAmount"] = file_data.apply(lambda row: {"amount": row["amount"],
+                                                                        "currency": {"name": row["currency_name"],
+                                                                                     "code": row["currency_code"]}},
+                                                           axis=1)
+            col_order = ["id", "state", "date", "operationAmount", "description", "from", "to"]
+            file_data = file_data[col_order]
             return file_data.to_dict(orient="records")
         else:
             logger.warning(f"Неподдерживаемый формат файла: {file_name}")
